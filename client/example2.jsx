@@ -1,16 +1,14 @@
+const { useState } = React;
+
 const HelloUser = (props) => {
-    const handleNameChange = (e) => {
-        ReactDOM.render(
-            <HelloUser username={e.target.value}/>,
-            document.getElementById('app')
-        )
-    };
+    const [username, setUsername] = useState(props.username);
+
     return (
         <div>
-            <p>Hello {props.username}!</p>
+            <p>Hello {username}!</p>
             <label>Change Name:</label>
-            <input type="text" value={props.username}
-                onChange={handleNameChange}/>
+            <input type="text" value={username}
+                onChange={(e) => setUsername(e.target.value)}/>
         </div>
     );
 };
